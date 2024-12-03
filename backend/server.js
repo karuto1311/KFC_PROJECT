@@ -13,12 +13,16 @@ app.listen(1311, () => {
     console.log("connected to server")
 })
 
-app.get("/",(req, res) => {
-    res.json("Hello KFC_PJ");
-})
-
 // // Import routes
 // const HelloRoutes = require('./routes/HelloRoutes');
 
 // //Use routes
 // app.use(HelloRoutes);
+
+app.get("/",(req, res) => {
+    const sql = "SELECT * FROM kfc_admin";
+    db.query(sql, (err, data) => {
+        if(err) return res.json("error kfc-admin");
+        return res.json(data);
+    })
+})

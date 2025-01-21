@@ -1,18 +1,17 @@
 import React from 'react'
-import AdminContent from './AdminContent'
 import AdminNavigationbar from '../Navigation/AdminNavigationbar'
 import AdminSlidebar from '../Navigation/AdminSlidebar'
+import ProductContent from './ProductContent'
 
 
-
-function Admin() {
+function Product() {
   return (
-    <div className=''>
+    <div>
         <AdminNavigationbar />
         <AdminSlidebar />
-        <AdminContent/>
+        <ProductContent />
     </div>
   )
 }
 
-export default Admin
+export default Product

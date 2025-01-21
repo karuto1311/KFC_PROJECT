@@ -7,10 +7,10 @@ import AdminSlidebar from '../Navigation/AdminSlidebar'
 
 function Admin() {
   return (
-    <div className=''>
+    <div>
         <AdminNavigationbar />
         <AdminSlidebar />
-        <AdminContent/>
+        <AdminContent />
     </div>
   )
 }

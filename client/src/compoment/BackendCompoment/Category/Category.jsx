@@ -1,18 +1,16 @@
 import React from 'react'
-import AdminContent from './AdminContent'
 import AdminNavigationbar from '../Navigation/AdminNavigationbar'
 import AdminSlidebar from '../Navigation/AdminSlidebar'
+import CategoryContent from './CategoryContent'
 
-
-
-function Admin() {
+function Category() {
   return (
-    <div className=''>
+    <div>
         <AdminNavigationbar />
         <AdminSlidebar />
-        <AdminContent/>
+        <CategoryContent />
     </div>
   )
 }
 
-export default Admin
+export default Category

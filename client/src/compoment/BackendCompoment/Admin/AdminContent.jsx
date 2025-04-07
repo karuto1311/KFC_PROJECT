@@ -43,12 +43,17 @@ useEffect (()=> {
                 <td>{data.Email}</td>
                 <td>{data.Pass}</td>
                 <td>
-                  {data.Gender
+                  {data.Gender === 1
                     ? "Nam"
-                    : "Nữ"
-                  }
+                    : data.Gender === 0
+                      ? "Nữ"
+                      : "Chưa cập nhật"}
                 </td>
-                <td>{data.Birthday}</td>
+                <td>
+                {data.Birthday
+                ? new Date(data.Birthday).toLocaleDateString("vi-VN")
+                : ""}
+                </td>
                 </tr>
               ))
             }

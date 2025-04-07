@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 function AdminSlidebar() {
   return (
-    <div className="w-64 bg-gray-800 fixed h-full">
+    <div className="w-64 bg-red-800 fixed h-full">
       <div className="p-4">
         <h1 className="text-xl text-white font-bold">Admin Dashboard</h1>
       </div>

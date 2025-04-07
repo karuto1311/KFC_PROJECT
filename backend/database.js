@@ -4,7 +4,7 @@ const db = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "",
-    database: "hotel_management"
+    database: "kfc_pj"
 });
 
 module.exports = db;

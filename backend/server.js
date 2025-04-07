@@ -10,7 +10,7 @@ app.use(express.json());
 
 
 app.listen(1311, () => {
-    console.log("connected to server")
+    console.log("connected to server 1311")
 })
 
 // // Import routes

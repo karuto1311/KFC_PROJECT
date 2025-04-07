@@ -4,7 +4,7 @@ import chickenlogo from '../../../assets/chickenlogo.png'
 
 function AdminNavigationbar() {
   return (
-    <nav className='bg-red-800 px-4 py-3 flex justify-between '>
+    <nav className='bg-red-400 px-4 py-3 flex justify-between '>
       <div className='flex items-center text-xl'>
         <img src={chickenlogo} className='text-white me-4 cursor-pointer'/>
         <span className='text-white font-semibold'>FASTFOOD-MANAGGER-PROJECT</span>

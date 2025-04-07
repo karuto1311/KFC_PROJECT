@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import '../../../assets/css/backendcss/admin.css'
+import axios from 'axios'
+import { data } from "react-router-dom";
 
 function AdminContent() {
-  const [gender, setGender] = useState(""); // State cho giới tính
-  const [dob, setDob] = useState("");       // State cho ngày sinh
+ 
+const [admin, setadmin] = useState([])
 
-  const handleGenderChange = (e) => setGender(e.target.value);
-  const handleDobChange = (e) => setDob(e.target.value);
+useEffect (()=> {
+    axios.get('http://localhost:1311/').then(res => setadmin(res.data)).catch(err => console.log(err));
+    
+}, [])
 
   return (
     <div className="p-6 bg-white shadow rounded ml-64">
@@ -15,9 +19,10 @@ function AdminContent() {
           Thêm nhân viên
         </button>
 
-        <table className="table-auto w-full border-collapse">
+        <table className="table-auto w-full border-collapse text-center">
           <thead>
-            <tr className="bg-gray-100">
+            <tr className="bg-red-400">
+              <th className="border px-4 py-2">ID</th>
               <th className="border px-4 py-2">Họ</th>
               <th className="border px-4 py-2">Tên</th>
               <th className="border px-4 py-2">Số điện thoại</th>
@@ -28,32 +33,25 @@ function AdminContent() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td className="border px-4 py-2"><input type="text" className="border rounded px-2 py-1 w-full" /></td>
-              <td className="border px-4 py-2"><input type="text" className="border rounded px-2 py-1 w-full" /></td>
-              <td className="border px-4 py-2"><input type="tel" className="border rounded px-2 py-1 w-full" /></td>
-              <td className="border px-4 py-2"><input type="email" className="border rounded px-2 py-1 w-full" /></td>
-              <td className="border px-4 py-2"><input type="password" className="border rounded px-2 py-1 w-full" /></td>
-              <td className="border px-4 py-2">
-                <select
-                  value={gender}
-                  onChange={handleGenderChange}
-                  className="border rounded px-2 py-1 w-full"
-                >
-                  <option value="">Chọn</option>
-                  <option value="Nam">Nam</option>
-                  <option value="Nữ">Nữ</option>
-                </select>
-              </td>
-              <td className="border px-4 py-2">
-                <input
-                  type="date"
-                  value={dob}
-                  onChange={handleDobChange}
-                  className="border rounded px-2 py-1 w-full"
-                />
-              </td>
-            </tr>
+            {
+              admin.map((data,i)=> (
+                <tr>
+                <td>{data.IDAdmin}</td>
+                <td>{data.FirstName}</td>
+                <td>{data.LastName}</td>
+                <td>{data.PhoneNumber}</td>
+                <td>{data.Email}</td>
+                <td>{data.Pass}</td>
+                <td>
+                  {data.Gender
+                    ? "Nam"
+                    : "Nữ"
+                  }
+                </td>
+                <td>{data.Birthday}</td>
+                </tr>
+              ))
+            }
           </tbody>
         </table>
       </div>

@@ -5,10 +5,10 @@ import { FaUserAlt } from "react-icons/fa";
 import { GiChickenOven } from "react-icons/gi";
 import { Link } from "react-router-dom";
 
-
 function AdminSlidebar() {
   return (
-    <div className="w-64 bg-red-400 fixed h-full">
+    <div className="w-64 bg-red-500 fixed h-full">
+      <hr className="border-gray-900" />
       <div className="p-4">
         <h1 className="text-xl text-white font-bold">Admin Dashboard</h1>
       </div>
@@ -16,28 +16,28 @@ function AdminSlidebar() {
       <ul className="mt-4 font-bold">
         {/* Admin */}
         <li className="text-white hover:bg-red-500 py-2 px-3 rounded cursor-pointer">
-          <Link to ='/'  className="flex items-center space-x-2">
-              <RiAdminFill className="text-2xl" />
-              <span>Admin</span>
+          <Link to="/" className="flex items-center space-x-2">
+            <RiAdminFill className="text-2xl" />
+            <span>Admin</span>
           </Link>
         </li>
         {/* Category */}
         <li className="text-white hover:bg-red-500 py-2 px-3 rounded cursor-pointer">
-          <Link to= '/category' className="flex items-center space-x-2">
-              <MdCategory className="text-2xl" />
-              <span>Category</span>
+          <Link to="/category" className="flex items-center space-x-2">
+            <MdCategory className="text-2xl" />
+            <span>Category</span>
           </Link>
         </li>
         {/* Product */}
         <li className="text-white hover:bg-red-500 py-2 px-3 rounded cursor-pointer">
-          <Link to='/product' className="flex items-center space-x-2">
+          <Link to="/product" className="flex items-center space-x-2">
             <GiChickenOven className="text-2xl" />
             <span>Product</span>
           </Link>
         </li>
         {/* User  */}
         <li className="text-white hover:bg-red-500 py-2 px-3 rounded cursor-pointer">
-          <Link to='/user' className="flex items-center space-x-2">
+          <Link to="/user" className="flex items-center space-x-2">
             <FaUserAlt className="text-2xl" />
             <span>User</span>
           </Link>

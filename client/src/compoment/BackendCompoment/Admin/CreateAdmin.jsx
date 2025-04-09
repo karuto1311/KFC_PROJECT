@@ -1,6 +1,7 @@
 import React from "react";
 import AdminNavigationbar from "../Navigation/AdminNavigationbar";
 import AdminSlidebar from "../Navigation/AdminSlidebar";
+import { Link } from "react-router-dom";
 
 function CreateAdmin() {
   return (
@@ -142,9 +143,11 @@ function CreateAdmin() {
                 <button className="bg-green-500 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-red-400 rounded shadow mb-4">
                   Submit
                 </button>
-                <button className="bg-red-500 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-red-400 rounded shadow mb-4">
-                  Exit
-                </button>
+                <Link to="/">
+                  <button className="bg-red-500 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-red-400 rounded shadow mb-4">
+                    Exit
+                  </button>
+                </Link>
               </div>
             </form>
           </div>

@@ -1,9 +1,42 @@
 import React from "react";
 import AdminNavigationbar from "../Navigation/AdminNavigationbar";
 import AdminSlidebar from "../Navigation/AdminSlidebar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
 
 function CreateAdmin() {
+  const [AdminID, SetAdminID] = useState("");
+  const [AdminFname, SetAdminFname] = useState("");
+  const [AdminLname, SetAdminLname] = useState("");
+  const [AdminSDT, SetAdminSDT] = useState("");
+  const [AdminEmail, SetAdminEmail] = useState("");
+  const [AdminPassword, SetAdminPassword] = useState("");
+  const [AdminGender, SetAdminGender] = useState("");
+  const [AdminBirth, SetAdminBirth] = useState("");
+  const navigate = useNavigate();
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    axios
+      .post("http://localhost:1311/createAdmin", {
+        AdminID,
+        AdminFname,
+        AdminLname,
+        AdminSDT,
+        AdminEmail,
+        AdminPassword,
+        AdminGender,
+        AdminBirth,
+      })
+      .then((res) => {
+        console.log(res);
+        alert("Tạo nhân viên thành công!");
+        navigate("/");
+      })
+      .catch((err) => console.log(err));
+  }
+
   return (
     <div className="">
       <AdminNavigationbar />
@@ -11,7 +44,7 @@ function CreateAdmin() {
       <div className="AdminCreate">
         <div className="p-6 bg-white shadow rounded ml-64">
           <div className="w-50 bg-white rounded">
-            <form className="">
+            <form className="" onSubmit={handleSubmit}>
               <h2 className="text-xl font-semibold mb-4 text-center">
                 Thêm nhân viên
               </h2>
@@ -28,6 +61,7 @@ function CreateAdmin() {
                   type="text"
                   placeholder="Enter ID"
                   className="w-1/2 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-red-400"
+                  onChange={(e) => SetAdminID(e.target.value)}
                 />
               </div>
               <div className="mb-4">
@@ -42,6 +76,7 @@ function CreateAdmin() {
                   type="text"
                   placeholder="Enter Fname"
                   className="w-1/2 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-red-400"
+                  onChange={(e) => SetAdminFname(e.target.value)}
                 />
               </div>
               <div className="mb-4">
@@ -56,6 +91,7 @@ function CreateAdmin() {
                   type="text"
                   placeholder="Enter Lname"
                   className="w-1/2 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-red-400"
+                  onChange={(e) => SetAdminLname(e.target.value)}
                 />
               </div>
               <div className="mb-4">
@@ -70,6 +106,7 @@ function CreateAdmin() {
                   type="text"
                   placeholder="Enter SDT"
                   className="w-1/2 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-red-400"
+                  onChange={(e) => SetAdminSDT(e.target.value)}
                 />
               </div>
               <div className="mb-4">
@@ -84,6 +121,7 @@ function CreateAdmin() {
                   type="text"
                   placeholder="Enter Email"
                   className="w-1/2 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-red-400"
+                  onChange={(e) => SetAdminEmail(e.target.value)}
                 />
               </div>
               <div className="mb-4">
@@ -98,6 +136,7 @@ function CreateAdmin() {
                   type="text"
                   placeholder="Enter Password"
                   className="w-1/2 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-red-400"
+                  onChange={(e) => SetAdminPassword(e.target.value)}
                 />
               </div>
               <div className="mb-4">
@@ -111,6 +150,7 @@ function CreateAdmin() {
                       name="gender"
                       value="1"
                       className="form-radio text-red-500"
+                      onChange={(e) => SetAdminGender(Number(e.target.value))}
                     />
                     <span className="ml-2">Nam</span>
                   </label>
@@ -120,6 +160,7 @@ function CreateAdmin() {
                       name="gender"
                       value="0"
                       className="form-radio text-red-500"
+                      onChange={(e) => SetAdminGender(Number(e.target.value))}
                     />
                     <span className="ml-2">Nữ</span>
                   </label>
@@ -137,6 +178,7 @@ function CreateAdmin() {
                   id="adminBirth"
                   type="datetime-local"
                   className="w-1/2 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-red-400"
+                  onChange={(e) => SetAdminBirth(e.target.value)}
                 />
               </div>
               <div className=" flex gap-4">

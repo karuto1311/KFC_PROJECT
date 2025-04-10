@@ -5,13 +5,15 @@ import Category from "./compoment/BackendCompoment/Category/Category";
 import Product from "./compoment/BackendCompoment/Product/Product";
 import User from "./compoment/BackendCompoment/User/User";
 import CreateAdmin from "./compoment/BackendCompoment/Admin/CreateAdmin";
+import UpdateAdmin from "./compoment/BackendCompoment/Admin/UpdateAdmin";
 function App() {
   return (
     <>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Admin />} />
-          <Route path="/CreateAdmin" element={<CreateAdmin />} />
+          <Route path="/createAdmin" element={<CreateAdmin />} />
+          <Route path="/updateAdmin/:id" element={<UpdateAdmin />} />
 
           {/* <Route path="/Admin" element={<Admin />} /> */}
           <Route path="/category" element={<Category />} />

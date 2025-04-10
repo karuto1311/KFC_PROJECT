@@ -20,6 +20,23 @@ app.listen(1311, () => {
 //         return res.json(data);
 //     })
 // })
+// app.post('/createAdmin', (req , res) => {
+//     const sql = "INSERT INTO kfc_admin (`IDAdmin`, `FirstName`, `LastName`, `PhoneNumber`, `Email`, `Pass`, `Gender`, `Birthday`) VALUES (?)";
+//     const values = [
+//         req.body.AdminID,
+//         req.body.AdminFname,
+//         req.body.AdminLname,
+//         req.body.AdminSDT,
+//         req.body.AdminEmail,
+//         req.body.AdminPassword,
+//         req.body.AdminGender,
+//         req.body.AdminBirth,
+//     ]
+//     db.query(sql, [values], (err, data) => {
+//         if(err) return res.json("Error");
+//         return res.json(data);
+//     })
+// })
 
 
 // // Import routes

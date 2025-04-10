@@ -13,7 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Admin />} />
           <Route path="/createAdmin" element={<CreateAdmin />} />
-          <Route path="/updateAdmin/:id" element={<UpdateAdmin />} />
+          <Route path="/updateAdmin/:IDAdmin" element={<UpdateAdmin />} />
 
           {/* <Route path="/Admin" element={<Admin />} /> */}
           <Route path="/category" element={<Category />} />

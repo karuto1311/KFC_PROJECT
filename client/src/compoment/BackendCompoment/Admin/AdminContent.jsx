@@ -9,7 +9,7 @@ function AdminContent() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:1311/")
+      .get(`http://localhost:1311/`)
       .then((res) => setadmin(res.data))
       .catch((err) => console.log(err));
   }, []);

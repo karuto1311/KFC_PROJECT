@@ -12,21 +12,21 @@ function CreateAdmin() {
   const [AdminSDT, SetAdminSDT] = useState("");
   const [AdminEmail, SetAdminEmail] = useState("");
   const [AdminPassword, SetAdminPassword] = useState("");
-  const [AdminGender, SetAdminGender] = useState("");
+  const [AdminGender, SetAdminGender] = useState(null);
   const [AdminBirth, SetAdminBirth] = useState("");
   const navigate = useNavigate();
 
   function handleSubmit(event) {
     event.preventDefault();
     axios
-      .post("http://localhost:1311/createAdmin", {
+      .post(`http://localhost:1311/createAdmin`, {
         AdminID,
         AdminFname,
         AdminLname,
         AdminSDT,
         AdminEmail,
         AdminPassword,
-        AdminGender,
+        AdminGender: AdminGender !== null ? AdminGender : null, // đảm bảo đúng kiểu
         AdminBirth,
       })
       .then((res) => {
@@ -42,7 +42,7 @@ function CreateAdmin() {
       <AdminNavigationbar />
       <AdminSlidebar />
       <div className="AdminCreate">
-        <div className="p-6 bg-white shadow rounded ml-64">
+        <div className="p-6 bg-white  ml-64">
           <div className="w-50 bg-white rounded">
             <form className="" onSubmit={handleSubmit}>
               <h2 className="text-xl font-semibold mb-4 text-center">
@@ -151,6 +151,7 @@ function CreateAdmin() {
                       value="1"
                       className="form-radio text-red-500"
                       onChange={(e) => SetAdminGender(Number(e.target.value))}
+                      checked={AdminGender === 1}
                     />
                     <span className="ml-2">Nam</span>
                   </label>
@@ -161,6 +162,7 @@ function CreateAdmin() {
                       value="0"
                       className="form-radio text-red-500"
                       onChange={(e) => SetAdminGender(Number(e.target.value))}
+                      checked={AdminGender === 0}
                     />
                     <span className="ml-2">Nữ</span>
                   </label>

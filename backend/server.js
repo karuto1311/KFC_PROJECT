@@ -38,6 +38,28 @@ app.listen(1311, () => {
 //     })
 // })
 
+// app.put('/updateAdmin/:IDAdmin', (req , res) => {
+//     const sql = "UPDATE kfc_admin SET `FirstName` = ?, `LastName` = ?, `PhoneNumber` = ?, `Email` = ?, `Pass` = ?, `Gender` = ?, `Birthday` = ? WHERE IDAdmin = ?";
+//     const genderValue = req.body.AdminGender !== null && req.body.AdminGender !== undefined
+//     ? req.body.AdminGender
+//     : null;
+//     const values = [
+//         req.body.AdminFname,
+//         req.body.AdminLname,
+//         req.body.AdminSDT,
+//         req.body.AdminEmail,
+//         req.body.AdminPassword,
+//         genderValue, // thay vì dùng trực tiếp req.body.AdminGender
+//         req.body.AdminBirth,
+//     ]
+//     const idAdmin = req.params.IDAdmin;
+//     db.query(sql, [...values, idAdmin], (err, data) => {
+//         if(err) return res.json("Error");
+//         return res.json(data);
+//     })
+// })
+
+
 
 // // Import routes
 // const HelloRoutes = require('./routes/HelloRoutes');

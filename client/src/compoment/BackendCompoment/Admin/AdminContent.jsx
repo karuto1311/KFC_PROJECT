@@ -14,11 +14,26 @@ function AdminContent() {
       .catch((err) => console.log(err));
   }, []);
 
+  const handleDelete = async (IDAdmin) => {
+    const isConfirmed = window.confirm("Bạn có chắc chắn muốn xóa admin này không?");
+    if (!isConfirmed) return;
+  
+    try {
+      await axios.delete(`http://localhost:1311/deleteAdmin/` + IDAdmin);
+      alert("Xóa thành công!");
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+      alert("Có lỗi xảy ra khi xóa!");
+    }
+  };
+  
+
   return (
     <div className="p-6  ml-64">
       <div className="w-50 bg-white rounded">
         <Link to="/createAdmin">
-          <button className="bg-green-500 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-red-400 rounded shadow mb-4">
+          <button className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 border border-red-400 rounded shadow mb-4">
             Thêm nhân viên
           </button>
         </Link>
@@ -98,14 +113,16 @@ function AdminContent() {
                   <td className="border border-black px-4 py-2">
                     <div className="flex gap-2 justify-center">
                       <Link to={`updateAdmin/${data.IDAdmin}`}>
-                        <button className="bg-yellow-500 hover:bg-gray-100 text-gray-800 font-semibold py-1 px-3 border border-red-400 rounded shadow">
+                        <button className="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-1 px-3 border border-red-400 rounded shadow">
                           Update
                         </button>
                       </Link>
-                      <button className="bg-blue-500 hover:bg-gray-100 text-gray-800 font-semibold py-1 px-3 border border-red-400 rounded shadow">
+                      <Link to={`detailAdmin/${data.IDAdmin}`}>
+                      <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-1 px-3 border border-red-400 rounded shadow">
                         Details
                       </button>
-                      <button className="bg-red-500 hover:bg-gray-100 text-gray-800 font-semibold py-1 px-3 border border-red-400 rounded shadow">
+                      </Link>
+                      <button className="bg-red-500 hover:bg-red-600 text-white font-semibold py-1 px-3 border border-red-400 rounded shadow" onClick={e => handleDelete(data.IDAdmin)}>
                         Delete
                       </button>
                     </div>

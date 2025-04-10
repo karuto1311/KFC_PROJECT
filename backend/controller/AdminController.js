@@ -54,3 +54,31 @@ exports.getAdmin = (req , res) =>{
         return res.json(data);
     })
    }
+   
+   //xoa thong tin
+   exports.deleteAdmin = (req , res) =>{
+    const sql = "DELETE FROM kfc_admin  WHERE IDAdmin = ?";
+
+    const idAdmin = req.params.IDAdmin;
+    db.query(sql, [idAdmin], (err, data) => {
+        if(err) return res.json("Error");
+        return res.json(data);
+    })
+   }
+
+   //xem chi tiet nhan viet
+   exports.detailAdmin = (req , res) =>{
+    const IDAdmin = req.params.IDAdmin;
+    const sql = 'SELECT * FROM kfc_admin WHERE IDAdmin = ?';
+  
+    db.query(sql, [IDAdmin], (err, result) => {
+      if (err) {
+        console.error('Lỗi truy vấn:', err);
+        res.status(500).send("Lỗi máy chủ");
+      } else if (result.length === 0) {
+        res.status(404).send("Không tìm thấy admin");
+      } else {
+        res.json(result[0]); // Trả về một admin
+      }
+    });
+   }

@@ -13,8 +13,7 @@ import { Link } from "react-router-dom";
 
 function AdminSlidebar() {
   return (
-    <div className="w-64 bg-red-500 fixed h-full">
-      <hr className="border-gray-900" />
+    <div className="w-64 bg-red-500 fixed top-[60px] left-0 h-[calc(100%-60px)]">
       <div className="p-4">
         <h1 className="text-xl text-white font-bold">Admin Dashboard</h1>
       </div>

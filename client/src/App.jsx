@@ -11,7 +11,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Routes>
+        <Routes className= "admin">
           <Route path="/" element={<Admin />} />
           <Route path="/createAdmin" element={<CreateAdmin />} />
           <Route path="/updateAdmin/:IDAdmin" element={<UpdateAdmin />} />
@@ -20,6 +20,10 @@ function App() {
 
           {/* <Route path="/Admin" element={<Admin />} /> */}
           <Route path="/category" element={<Category />} />
+
+
+
+
           <Route path="/product" element={<Product />} />
           <Route path="/user" element={<User />} />
         </Routes>

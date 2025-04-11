@@ -30,7 +30,7 @@ function AdminContent() {
   
 
   return (
-    <div className="p-6  ml-64">
+    <div className="p-6  ml-64 pt-[100px]">
       <div className="w-50 bg-white rounded">
         <Link to="/createAdmin">
           <button className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 border border-red-400 rounded shadow mb-4">

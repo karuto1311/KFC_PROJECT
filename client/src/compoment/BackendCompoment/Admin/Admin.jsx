@@ -9,6 +9,9 @@ function Admin() {
       <AdminNavigationbar />
       <AdminSlidebar />
       <AdminContent />
+
+
+
     </div>
   );
 }

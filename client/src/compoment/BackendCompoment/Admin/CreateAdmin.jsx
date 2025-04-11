@@ -16,8 +16,42 @@ function CreateAdmin() {
   const [AdminBirth, SetAdminBirth] = useState("");
   const navigate = useNavigate();
 
+  const [error, setError] = useState("");
+
+  function isEmailValid(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
+  
+
   function handleSubmit(event) {
     event.preventDefault();
+
+    // Kiểm tra rỗng
+    if (
+      !AdminID.trim() ||
+      !AdminFname.trim() ||
+      !AdminLname.trim() ||
+      !AdminSDT.trim() ||
+      !AdminEmail.trim() ||
+      !AdminPassword.trim() ||
+      AdminGender === null ||
+      !AdminBirth
+    ) {
+      setError("Vui lòng nhập đầy đủ thông tin!");
+      return;
+    }
+
+    // Kiểm tra định dạng email
+    if (!isEmailValid(AdminEmail)) {
+      setError("Email không hợp lệ!");
+      return;
+    }
+
+    // Nếu hợp lệ, xóa lỗi cũ
+    setError("");
+
+
     axios
       .post(`http://localhost:1311/createAdmin`, {
         AdminID,
@@ -42,7 +76,7 @@ function CreateAdmin() {
       <AdminNavigationbar />
       <AdminSlidebar />
       <div className="AdminCreate">
-        <div className="p-6 bg-white  ml-64">
+        <div className="p-6 bg-white  ml-64 pt-[100px]">
           <div className="w-50 bg-white rounded">
             <form className="" onSubmit={handleSubmit}>
               <h2 className="text-xl font-semibold mb-4 text-center">
@@ -183,6 +217,10 @@ function CreateAdmin() {
                   onChange={(e) => SetAdminBirth(e.target.value)}
                 />
               </div>
+              {error && (
+                <div className="text-red-500 font-medium mb-4">{error}</div>
+              )}
+
               <div className=" flex gap-4">
                 <button className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 border border-red-400 rounded shadow mb-4">
                   Submit

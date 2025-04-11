@@ -32,7 +32,7 @@ function AdminDetails() {
       <AdminNavigationbar />
       <AdminSlidebar />
       <div className="AdminCreate">
-        <div className="p-6 bg-white ml-64">
+        <div className="p-6 bg-white ml-64 pt-[100px]">
           <div className="w-50 bg-white rounded">
             <h2 className="text-xl font-semibold mb-4 text-center">
               Chi tiết nhân viên {IDAdmin}

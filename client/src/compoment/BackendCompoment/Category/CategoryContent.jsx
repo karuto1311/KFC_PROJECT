@@ -32,7 +32,7 @@ function CategoryContent() {
   return (
     <div className="p-6  ml-64 pt-[100px]">
       <div className="w-50 bg-white rounded">
-        <Link to="/createAdmin">
+        <Link to="/createCategory">
           <button className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 border border-red-400 rounded shadow mb-4">
             Thêm danh mục
           </button>
@@ -64,19 +64,20 @@ function CategoryContent() {
                 return rowText.includes(searchTerm.toLowerCase());
               })
               .map((data, i) => (
-                <tr key={i}>
+                <tr key={i} className="text-center">
                   <td className="border border-black px-4 py-2">
                     {data.IDCategory}
                   </td>
                   <td className="border border-black px-4 py-2">
                     {data.Name_Category	}
                   </td>
-                  <td className="px-4 py-2  items-center flex  justify-center ">
+                  <td className=" border border-black px-4 py-2  items-center ">
                   <img
-                    src={`../images/category/${data.Image_Category.split('/').pop()}`}
+                    src={`http://localhost:1311/images/${data.Image_Category}`}
                     alt={data.Name_Category}
-                    className="w-16 h-16 object-cover rounded "
+                    className="w-32 h-32 object-cover rounded mx-auto"
                   />
+
                   </td>
                   <td className="border border-black px-4 py-2">
                     <div className="flex gap-2 justify-center">

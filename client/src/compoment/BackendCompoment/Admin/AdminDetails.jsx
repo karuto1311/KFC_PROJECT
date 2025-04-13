@@ -82,7 +82,7 @@ function AdminDetails() {
                 }</p>
             </div>
 
-            <Link to="/">
+            <Link to="/category">
               <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-1 px-3 border border-red-400 rounded shadow">
                 Quay lại
               </button>

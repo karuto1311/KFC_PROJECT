@@ -8,6 +8,9 @@ import CreateAdmin from "./compoment/BackendCompoment/Admin/CreateAdmin";
 import UpdateAdmin from "./compoment/BackendCompoment/Admin/UpdateAdmin";
 import AdminDetails from "./compoment/BackendCompoment/Admin/AdminDetails";
 import CreateCategory from "./compoment/BackendCompoment/Category/CreateCategory";
+import CategoryDetails from "./compoment/BackendCompoment/Category/CategoryDetails";
+import UpdateCategory from "./compoment/BackendCompoment/Category/UpdateCategory";
+
 function App() {
   return (
     <>
@@ -22,12 +25,12 @@ function App() {
           {/* <Route path="/Admin" element={<Admin />} /> */}
           <Route path="/category" element={<Category />} />
           <Route path="/createCategory" element={<CreateCategory />} />
-
-
-
+          <Route path="/category/updateCategory/:IDCategory" element={<UpdateCategory />} />
+          <Route path="/category/detailCategory/:IDCategory" element={<CategoryDetails />} />
 
 
           <Route path="/product" element={<Product />} />
+
           <Route path="/user" element={<User />} />
         </Routes>
       </BrowserRouter>

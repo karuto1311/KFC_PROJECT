@@ -12,24 +12,37 @@ exports.getAdmin = (req , res) =>{
 
    //them thong tin
    exports.postAdmin = (req , res) =>{
-    const sql = "INSERT INTO kfc_admin (`IDAdmin`, `FirstName`, `LastName`, `PhoneNumber`, `Email`, `Pass`, `Gender`, `Birthday`) VALUES (?)";
-    const genderValue = req.body.AdminGender !== null && req.body.AdminGender !== undefined
-    ? req.body.AdminGender
-    : null;
+    const getMaxIdSql = "SELECT MAX(IDAdmin) AS maxId FROM kfc_admin";
+    db.query(getMaxIdSql,(err,result) =>{
+      if (err) return res.json("Error");
 
-    const values = [
-        req.body.AdminID,
-        req.body.AdminFname,
-        req.body.AdminLname,
-        req.body.AdminSDT,
-        req.body.AdminEmail,
-        req.body.AdminPassword,
-        genderValue, // thay vì dùng trực tiếp req.body.AdminGender
-        req.body.AdminBirth,
-    ]
-    db.query(sql, [values], (err, data) => {
-        if(err) return res.json("Error");
-        return res.json(data);
+      // Tạo ID mới
+      let nextId = "NV001"; // mặc định nếu chưa có gì trong DB
+      if (result[0].maxId) {
+          const maxIdNumber = parseInt(result[0].maxId.replace("NV", ""));
+          const newIdNumber = maxIdNumber + 1;
+          nextId = "NV" + newIdNumber.toString().padStart(3, "0");
+      }
+
+      const sql = "INSERT INTO kfc_admin (`IDAdmin`, `FirstName`, `LastName`, `PhoneNumber`, `Email`, `Pass`, `Gender`, `Birthday`) VALUES (?)";
+      const genderValue = req.body.AdminGender !== null && req.body.AdminGender !== undefined
+      ? req.body.AdminGender
+      : null;
+  
+      const values = [
+          nextId,
+          req.body.AdminFname,
+          req.body.AdminLname,
+          req.body.AdminSDT,
+          req.body.AdminEmail,
+          req.body.AdminPassword,
+          genderValue, // thay vì dùng trực tiếp req.body.AdminGender
+          req.body.AdminBirth,
+      ]
+      db.query(sql, [values], (err, data) => {
+          if(err) return res.json("Error");
+          return res.json(data);
+      })
     })
    }
 

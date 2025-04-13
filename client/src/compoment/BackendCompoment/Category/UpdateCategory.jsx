@@ -1,14 +1,15 @@
 import React from 'react'
 import AdminNavigationbar from '../Navigation/AdminNavigationbar'
 import AdminSlidebar from '../Navigation/AdminSlidebar'
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate ,useParams } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 
 
-function CreateCategory() {
+function UpdateCategory() {
 
 //  const [CategoryID, SetCategoryID] = useState(""); 
+const { IDCategory } = useParams();
  const [CategoryName, SetCategoryName] = useState("");
  const [CategoryImage, SetcategoryImage] = useState('');
  const navigate = useNavigate();
@@ -36,7 +37,7 @@ function CreateCategory() {
 
 
     axios
-      .post(`http://localhost:1311/createCategory?folder=categories`, formData,{
+      .put(`http://localhost:1311/updateCategory/${IDCategory}?folder=categories`, formData,{
         headers: {
           'Content-Type': 'multipart/form-data',
         }
@@ -44,7 +45,7 @@ function CreateCategory() {
       })
       .then((res) => {
         console.log(res);
-        alert("Tạo danh mục thành công!");
+        alert("Cập nhật danh mục thành công!");
         navigate("/category");
       })
       .catch((err) => console.log(err));
@@ -67,7 +68,7 @@ function CreateCategory() {
           <div className='w-50 bg-white rounded"'>
               <form className='' onSubmit={handleSubmit} >
               <h2 className="text-xl font-semibold mb-4 text-center">
-                Thêm danh mục
+                    Cập nhật danh mục {IDCategory}
               </h2>
               {/* <div className="mb-4">
                 <label
@@ -140,4 +141,4 @@ function CreateCategory() {
   )
 }
 
-export default CreateCategory
+export default UpdateCategory

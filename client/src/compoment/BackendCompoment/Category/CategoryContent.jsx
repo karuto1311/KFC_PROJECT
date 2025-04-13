@@ -73,20 +73,19 @@ function CategoryContent() {
                   </td>
                   <td className=" border border-black px-4 py-2  items-center ">
                   <img
-                    src={`http://localhost:1311/images/${data.Image_Category}`}
-                    alt={data.Name_Category}
-                    className="w-32 h-32 object-cover rounded mx-auto"
-                  />
-
+                      src={`http://localhost:1311/images/categories/${data.Image_Category}`}
+                      alt={data.Name_Category}
+                      className="w-32 h-32 object-cover rounded mx-auto"
+                    />
                   </td>
                   <td className="border border-black px-4 py-2">
                     <div className="flex gap-2 justify-center">
-                      <Link to={`updateAdmin/${data.IDCategory}`}>
+                      <Link to={`updateCategory/${data.IDCategory}`}>
                         <button className="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-1 px-3 border border-red-400 rounded shadow">
                           Update
                         </button>
                       </Link>
-                      <Link to={`detailAdmin/${data.IDCategory}`}>
+                      <Link to={`detailCategory/${data.IDCategory}`}>
                       <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-1 px-3 border border-red-400 rounded shadow">
                         Details
                       </button>

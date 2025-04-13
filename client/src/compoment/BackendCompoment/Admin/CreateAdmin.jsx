@@ -6,7 +6,7 @@ import { useState } from "react";
 import axios from "axios";
 
 function CreateAdmin() {
-  const [AdminID, SetAdminID] = useState("");
+  // const [AdminID, SetAdminID] = useState("");
   const [AdminFname, SetAdminFname] = useState("");
   const [AdminLname, SetAdminLname] = useState("");
   const [AdminSDT, SetAdminSDT] = useState("");
@@ -29,7 +29,7 @@ function CreateAdmin() {
 
     // Kiểm tra rỗng
     if (
-      !AdminID.trim() ||
+      // !AdminID.trim() ||
       !AdminFname.trim() ||
       !AdminLname.trim() ||
       !AdminSDT.trim() ||
@@ -54,7 +54,7 @@ function CreateAdmin() {
 
     axios
       .post(`http://localhost:1311/createAdmin`, {
-        AdminID,
+        // AdminID,
         AdminFname,
         AdminLname,
         AdminSDT,
@@ -83,7 +83,7 @@ function CreateAdmin() {
                 Thêm nhân viên
               </h2>
 
-              <div className="mb-4">
+              {/* <div className="mb-4">
                 <label
                   htmlFor="adminId"
                   className="block text-gray-700 font-medium mb-1"
@@ -97,7 +97,7 @@ function CreateAdmin() {
                   className="w-1/2 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-red-400"
                   onChange={(e) => SetAdminID(e.target.value)}
                 />
-              </div>
+              </div> */}
               <div className="mb-4">
                 <label
                   htmlFor="adminFname"

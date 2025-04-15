@@ -96,9 +96,13 @@ app.listen(1311, () => {
 // const HelloRoutes = require('./routes/HelloRoutes');
 const AdminRoutes = require('./routes/AdminRoutes');
 const CategoryRoutes = require ('./routes/CategoryRoutes');
+const ProductRoutes = require ('./routes/ProductRoutes');
+
 
 // //Use routes
 // app.use(HelloRoutes);
 app.use(AdminRoutes);
 app.use(CategoryRoutes);
+app.use(ProductRoutes);
+
 

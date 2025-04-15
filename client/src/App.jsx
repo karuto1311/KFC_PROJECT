@@ -10,6 +10,12 @@ import AdminDetails from "./compoment/BackendCompoment/Admin/AdminDetails";
 import CreateCategory from "./compoment/BackendCompoment/Category/CreateCategory";
 import CategoryDetails from "./compoment/BackendCompoment/Category/CategoryDetails";
 import UpdateCategory from "./compoment/BackendCompoment/Category/UpdateCategory";
+import CreateProduct from "./compoment/BackendCompoment/Product/CreateProduct";
+import ProductDetails from "./compoment/BackendCompoment/Product/ProductDetails";
+import UpdateProduct from "./compoment/BackendCompoment/Product/UpdateProduct";
+
+
+
 
 function App() {
   return (
@@ -30,6 +36,11 @@ function App() {
 
 
           <Route path="/product" element={<Product />} />
+          <Route path="/createProduct" element={<CreateProduct />} />
+          <Route path="/product/updateProduct/:IDProduct" element={<UpdateProduct />} />
+          <Route path="/product/detailProduct/:IDProduct" element={<ProductDetails />} />
+
+
 
           <Route path="/user" element={<User />} />
         </Routes>

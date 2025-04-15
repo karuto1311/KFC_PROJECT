@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "../../../assets/css/backendcss/admin.css";
 import axios from "axios";
 import { data, Link } from "react-router-dom";
 

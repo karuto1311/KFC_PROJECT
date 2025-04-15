@@ -124,7 +124,7 @@ const { IDCategory } = useParams();
 
               <div className=" flex gap-4">
                 <button className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 border border-red-400 rounded shadow mb-4">
-                  Submit
+                  Update
                 </button>
                 <Link to="/category">
                   <button className="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 border border-red-400 rounded shadow mb-4">

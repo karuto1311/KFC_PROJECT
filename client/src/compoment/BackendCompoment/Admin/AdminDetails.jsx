@@ -87,6 +87,11 @@ function AdminDetails() {
                 }</p>
             </div>
 
+            <div className="mb-4">
+              <label className="block font-medium">Vai trò</label>
+              <p>{admin.Role}</p>
+            </div>
+
             <Link to="/">
               <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-1 px-3 border border-red-400 rounded shadow">
                 Quay lại

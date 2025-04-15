@@ -1,8 +1,9 @@
 import React from "react";
 import AdminNavigationbar from "../Navigation/AdminNavigationbar";
 import AdminSlidebar from "../Navigation/AdminSlidebar";
+import { FaEye, FaEyeSlash } from 'react-icons/fa'; // 👁️
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import axios from "axios";
 
 function UpdateAdmin() {
@@ -16,13 +17,41 @@ function UpdateAdmin() {
   const [AdminBirth, SetAdminBirth] = useState("");
   const navigate = useNavigate();
 
-    const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+
+  const [error, setError] = useState("");
   
+  const togglePassword = () => {
+    setShowPassword((prev) => !prev);
+  };
+
+
     function isEmailValid(email) {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       return emailRegex.test(email);
     }
     
+    useEffect(() => {
+      axios
+        .get(`http://localhost:1311/`)
+        .then((res) => {
+          const selectedAdmin = res.data.find(p => p.IDAdmin  == IDAdmin);
+          if (selectedAdmin) {
+            SetAdminFname(selectedAdmin.FirstName);
+            SetAdminLname(selectedAdmin.LastName);
+            SetAdminSDT(selectedAdmin.PhoneNumber);
+            SetAdminEmail(selectedAdmin.Email);
+            SetAdminPassword(selectedAdmin.Pass);
+            SetAdminGender(selectedAdmin.Gender);
+
+            const formattedBirth = new Date(selectedAdmin.Birthday)
+            .toISOString()
+            .slice(0, 16);
+            SetAdminBirth(formattedBirth);
+          }
+        })
+        .catch((err) => console.log(err));
+    }, [IDAdmin]);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -93,6 +122,7 @@ function UpdateAdmin() {
                   type="text"
                   placeholder="Enter Fname"
                   className="w-1/2 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-red-400"
+                  value={AdminFname}
                   onChange={(e) => SetAdminFname(e.target.value)}
                 />
               </div>
@@ -108,6 +138,7 @@ function UpdateAdmin() {
                   type="text"
                   placeholder="Enter Lname"
                   className="w-1/2 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-red-400"
+                  value={AdminLname}
                   onChange={(e) => SetAdminLname(e.target.value)}
                 />
               </div>
@@ -123,6 +154,7 @@ function UpdateAdmin() {
                   type="text"
                   placeholder="Enter SDT"
                   className="w-1/2 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-red-400"
+                  value={AdminSDT}
                   onChange={(e) => SetAdminSDT(e.target.value)}
                 />
               </div>
@@ -138,6 +170,7 @@ function UpdateAdmin() {
                   type="text"
                   placeholder="Enter Email"
                   className="w-1/2 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-red-400"
+                  value={AdminEmail}
                   onChange={(e) => SetAdminEmail(e.target.value)}
                 />
               </div>
@@ -150,11 +183,16 @@ function UpdateAdmin() {
                 </label>
                 <input
                   id="adminPassword"
-                  type="text"
+                  type={showPassword ? 'text' : 'password'}
                   placeholder="Enter Password"
                   className="w-1/2 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-red-400"
+                  value={AdminPassword}
                   onChange={(e) => SetAdminPassword(e.target.value)}
                 />
+
+                <button type="button" onClick={togglePassword} className="p-2">
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+                </button>
               </div>
               <div className="mb-4">
                 <label className="block text-gray-700 font-medium mb-1">
@@ -197,6 +235,7 @@ function UpdateAdmin() {
                   id="adminBirth"
                   type="datetime-local"
                   className="w-1/2 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-red-400"
+                  value={AdminBirth}
                   onChange={(e) => SetAdminBirth(e.target.value)}
                 />
               </div>

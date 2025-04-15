@@ -2,7 +2,7 @@ import React from 'react'
 import AdminNavigationbar from '../Navigation/AdminNavigationbar'
 import AdminSlidebar from '../Navigation/AdminSlidebar'
 import { Link, useNavigate ,useParams } from "react-router-dom";
-import { useState } from "react";
+import { useState , useEffect  } from "react";
 import axios from "axios";
 
 
@@ -15,6 +15,18 @@ const { IDCategory } = useParams();
  const navigate = useNavigate();
  const [error, setError] = useState("");
  
+
+ useEffect(() => {
+  axios
+    .get(`http://localhost:1311/category`)
+    .then((res) => {
+      const selectedCategory = res.data.find(p => p.IDCategory == IDCategory);
+      if (selectedCategory) {
+        SetCategoryName(selectedCategory.Name_Category);
+      }
+    })
+    .catch((err) => console.log(err));
+}, [IDCategory]);
 
   function handleSubmit (event){
     event.preventDefault();
@@ -97,6 +109,7 @@ const { IDCategory } = useParams();
                   type="text"
                   placeholder="Enter category"
                   className="w-1/2 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-red-400"
+                  value={CategoryName}
                   onChange={(e) => SetCategoryName(e.target.value)}
                 />
               </div>
